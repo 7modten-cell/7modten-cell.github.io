@@ -7,39 +7,4 @@
 
 
 
-<!-- PRELOADER SAFETY SCRIPT -->
-<style>
-@keyframes autoDismissLoader {
-  0% { opacity: 1; visibility: visible; }
-  80% { opacity: 1; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; pointer-events: none; }
-}
-div.fixed[class*="z-[999]"], div.fixed.z-\[999\] {
-  animation: autoDismissLoader 2.2s forwards cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-</style>
-<script>
-(function(){
-  function reveal(){
-    try {
-      var loaders = document.querySelectorAll('div.fixed');
-      loaders.forEach(function(el){
-        var cls = el.className || '';
-        if(cls.indexOf('999') !== -1 || (el.innerText || '').indexOf('LOADING') !== -1){
-          el.style.transition = 'opacity 0.5s ease-out';
-          el.style.opacity = '0';
-          el.style.pointerEvents = 'none';
-          setTimeout(function(){ try { if(el.parentNode) el.parentNode.removeChild(el); } catch(e){} }, 500);
-        }
-      });
-      document.body.style.setProperty('position', 'static', 'important');
-      document.body.style.setProperty('overflow', 'auto', 'important');
-      document.documentElement.style.setProperty('overflow', 'auto', 'important');
-    } catch(err){}
-  }
-  setTimeout(reveal, 1800);
-  window.addEventListener('load', function(){ setTimeout(reveal, 1200); });
-  document.addEventListener('DOMContentLoaded', function(){ setTimeout(reveal, 2000); });
-})();
-</script>
 </body></html>
